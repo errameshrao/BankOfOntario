@@ -1,14 +1,15 @@
-package com.canadatrust.model;
+package com.canadatrust;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "CANADA_TRUST_USER")
-public class User {
+public class User implements Serializable, Cloneable {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
