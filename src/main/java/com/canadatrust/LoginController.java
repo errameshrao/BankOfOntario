@@ -27,10 +27,11 @@ public class LoginController {
         User user = userService.getUserByUserName(userName);
         model.addAttribute("user", user);
 
-        System.out.println("1111111111111111111111111111111111111111111111111111111111"+user.getFirstName());
-        System.out.println("1111111111111111111111111111111111111111111111111111111111"+user.getLastName());
-
-        return "";
+        if(user.getUserType().equalsIgnoreCase("Admin")){
+            return "adminPage";
+        }else{
+            return "customerPage";
+        }
     }
 
 }
