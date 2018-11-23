@@ -19,14 +19,18 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String authenticateUser(@RequestParam("userName") String userName, @RequestParam("password") String password , Model model) {
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password , Model model) {
 
 
 
-        User user = userService.getUserByUserName(userName);
+        User user = userService.getUserByUserName(email);
+        if(user==null){
+            model.addAttribute("Invalid", "Invalid Credentials");
+            return "login";
+        }
+
         model.addAttribute("user", user);
-
         if(user.getUserType().equalsIgnoreCase("Admin")){
             return "adminPage";
         }else{
