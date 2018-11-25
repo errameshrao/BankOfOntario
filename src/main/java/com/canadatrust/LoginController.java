@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -19,8 +21,14 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping("/logoutUser")
+    public String logOut() {
+        return "login";
+    }
+
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password , Model model) {
+    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password ,
+                                   Model model, HttpSession httpSession) {
 
 
 
@@ -30,6 +38,7 @@ public class LoginController {
             return "login";
         }
 
+        httpSession.setAttribute("loggedInUser",user);
         model.addAttribute("user", user);
         if(user.getUserType().equalsIgnoreCase("Admin")){
             return "adminPage";
