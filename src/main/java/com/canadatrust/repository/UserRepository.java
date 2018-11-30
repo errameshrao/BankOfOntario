@@ -10,4 +10,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u where u.email = ?1")
     User getUserByUserName(String email);
+
+    @Query("select u from User u where u.password = ?1")
+    User getUserByPassword(String oldPassword);
 }

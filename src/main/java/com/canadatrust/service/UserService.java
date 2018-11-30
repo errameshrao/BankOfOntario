@@ -5,4 +5,6 @@ import com.canadatrust.User;
 public interface UserService {
 
     User getUserByUserName(String email);
+
+    User getUserByPassword(String oldPassword);
 }

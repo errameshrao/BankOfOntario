@@ -71,7 +71,7 @@
                     <ul class="nav navbar-nav pull-right">
                         <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${user.firstName} ${user.lastName}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Change Password</a></li>
+                                <li><a href="/openChangePassword">Change Password</a></li>
                                 <li><a href="#">My Profile</a></li>
                                 <li><a href="#">Register New Employee</a></li>
                             </ul>

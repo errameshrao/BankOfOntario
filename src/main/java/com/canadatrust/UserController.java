@@ -39,7 +39,6 @@ public class UserController {
                                      BindingResult result, ModelMap model){
 
         user.setCreateDate(new Date());
-        user.setUserName("bruno_ganza");
         user.setUserType("admin");
         userRepository.save(user);
 

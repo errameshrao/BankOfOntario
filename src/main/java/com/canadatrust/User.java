@@ -24,9 +24,6 @@ public class User implements Serializable, Cloneable {
     @Column(name = "VERSION")
     private int version;
 
-    @NotNull
-    @Column(name = "USER_NAME")
-    private String userName;
 
     @NotNull
     @Column(name = "FIRST_NAME")
@@ -47,6 +44,17 @@ public class User implements Serializable, Cloneable {
     @NotNull
     @Column(name = "PASSWORD")
     private String password;
+
+    @Column(name = "ISSUPERUSER")
+    private boolean isSuperUser;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "ACCOUNT_ID")
+    private Account account;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
+    private Address address;
 
     public String getId() {
         return id;
@@ -70,14 +78,6 @@ public class User implements Serializable, Cloneable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getFirstName() {
@@ -118,5 +118,29 @@ public class User implements Serializable, Cloneable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isSuperUser() {
+        return isSuperUser;
+    }
+
+    public void setSuperUser(boolean superUser) {
+        isSuperUser = superUser;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
