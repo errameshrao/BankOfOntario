@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -27,7 +28,8 @@ public class LoginController {
     }
 
     @RequestMapping("/logoutUser")
-    public String logOut() {
+    public String logOut(HttpSession httpSession) {
+        httpSession.removeAttribute("loggedInUser");
         return "login";
     }
 
@@ -58,28 +60,28 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password ,
+    public ModelAndView authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password ,
                                    Model model, HttpSession httpSession) {
-
-
 
         User user = userService.getUserByUserName(email);
         if(user==null){
             model.addAttribute("loginMessage", "Invalid User name or password");
-            return "errorPage";
+            return new ModelAndView ("errorPage");
         }
 
         if(user.getPassword().equalsIgnoreCase(password) && user.getUserType().equalsIgnoreCase("Admin")){
+
+            List usersList = userRepository.findAll();
             httpSession.setAttribute("loggedInUser",user);
             model.addAttribute("user", user);
-            return "adminPage";
+            return new ModelAndView("adminPage","userList",usersList);
         }else if(user.getPassword().equalsIgnoreCase(password) && user.getUserType().equalsIgnoreCase("normal")){
             httpSession.setAttribute("loggedInUser",user);
             model.addAttribute("user", user);
-            return "customerPage";
+            return new ModelAndView("customerPage");
         }else{
             model.addAttribute("loginMessage", "Invalid User name or password");
-            return "errorPage";
+            return new ModelAndView( "errorPage");
         }
     }
 

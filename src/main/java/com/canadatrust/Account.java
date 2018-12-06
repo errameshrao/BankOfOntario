@@ -27,15 +27,19 @@ public class Account implements Serializable, Cloneable {
 
     @NotNull
     @Column(name="ACCOUNT_NUMBER")
-    private double accountNumber;
+    private int accountNumber;
 
     @NotNull
     @Column(name="BALANCE")
     private double balance;
 
     @NotNull
-    @Column(name="MINIMUM_NUMBER")
+    @Column(name="MINIMUM_BALANCE")
     private double minimumBalance;
+
+    @NotNull
+    @Column(name="INITIAL_BALANCE")
+    private double initialBalance;
 
     @NotNull
     @Column(name="ACCOUNT_TYPE")
@@ -69,11 +73,11 @@ public class Account implements Serializable, Cloneable {
         this.version = version;
     }
 
-    public double getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(double accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -107,6 +111,14 @@ public class Account implements Serializable, Cloneable {
 
     public void setHasVirtualCreditCard(boolean hasVirtualCreditCard) {
         this.hasVirtualCreditCard = hasVirtualCreditCard;
+    }
+
+    public double getInitialBalance() {
+        return initialBalance;
+    }
+
+    public void setInitialBalance(double initialBalance) {
+        this.initialBalance = initialBalance;
     }
 }
 

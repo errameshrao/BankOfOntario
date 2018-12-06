@@ -58,7 +58,7 @@
     <div id="workbench" class="container">
 
         <div class="row" style="margin-top:60px">
-            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <div class="col-xs-8 col-sm-6 col-md-4 col-sm-offset-2 col-md-offset-3">
                 <form:form role="form" action="/registerUser" method="POST" modelAttribute="user">
                     <fieldset>
                         <h2>Open New Account </h2>
@@ -66,11 +66,88 @@
                         <div class="form-group">
                             <form:label path="firstName">Enter First Name</form:label>
                             <form:input type="text" path="firstName" id="firstName" class="form-control input-lg" placeholder="Enter First Name"/>
-                        </div>
-                        <div class="form-group">
                             <form:label path="lastName">Enter Last Name</form:label>
                             <form:input type="text" path="lastName" id="lastName" class="form-control input-lg" placeholder="Enter Last Name"/>
                         </div>
+                        <div class="form-group">
+                            <form:label path="userType">Select User Type</form:label>
+                            <select class="form-control input-lg" name="userType" id="userType">
+                                <option value="admin">Admin</option>
+                                <option value="normal">Normal</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <form:label path="account.balance">Enter Account balance</form:label>
+                            <form:input type="text" path="account.balance" id="balance" class="form-control input-lg" placeholder="Account Balance"/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <form:label path="account.minimumBalance">Enter Minimum balance</form:label>
+                            <form:input type="text" path="account.minimumBalance" id="minimumBalance" class="form-control input-lg" placeholder="Minimum balance"/>
+                        </div>
+
+                        <div class="form-group">
+                            <form:label path="account.initialBalance">Enter Initial Amount</form:label>
+                            <form:input type="text" path="account.initialBalance" id="initialBalance" class="form-control input-lg" placeholder="Account Opening Balance"/>
+                        </div>
+
+                        <div class="form-group">
+                            <form:label path="account.accountType">Select Account Type</form:label>
+                            <select class="form-control input-lg" name="account.accountType" id="accountType">
+                                <option value="Saving">Saving</option>
+                                <option value="Chequing">Chequing</option>
+                                <option value="Current">Current</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <form:label path="account.hasVirtualCreditCard">Virtual Credit Card</form:label>
+                            <select class="form-control input-lg" name="account.hasVirtualCreditCard" id="hasVirtualCreditCard">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <form:label path="address.streetNumber">Enter Street Number</form:label>
+                            <form:input type="text" path="address.streetNumber" id="streetNumber" class="form-control input-lg" placeholder="Enter Street Number"/>
+                        </div>
+
+                        <div class="form-group">
+                            <form:label path="address.streetName">Enter Street Name</form:label>
+                            <form:input type="text" path="address.streetName" id="streetName" class="form-control input-lg" placeholder="Street Name"/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <form:label path="address.city">Enter City</form:label>
+                            <form:input type="text" path="address.city" id="city" class="form-control input-lg" placeholder="Enter City"/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <form:label path="address.province">Enter Province</form:label>
+                            <form:input type="text" path="address.province" id="province" class="form-control input-lg" placeholder="Enter Province"/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <form:label path="address.country">Enter Country</form:label>
+                            <form:input type="text" path="address.country" id="country" class="form-control input-lg" placeholder="Enter Country"/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <form:label path="address.postalCode">Enter Postal Code</form:label>
+                            <form:input type="text" path="address.postalCode" id="postalCode" class="form-control input-lg" placeholder="Enter Postal Code"/>
+                        </div>
+
+
                         <div class="form-group">
                             <form:label path="email">Enter Email Address</form:label>
                             <form:input type="email" path="email" id="email" class="form-control input-lg" placeholder="Email Address"/>
@@ -80,14 +157,6 @@
                             <form:input type="password" path="password" id="password" class="form-control input-lg" placeholder="Password"/>
                         </div>
 
-                        <%--<div class="form-group">
-                            <form:label>Select User Type</form:label>
-                            <select class="form-control input-lg" name="userType" id="userType">
-                                <option value="">Select User Type</option>
-                                <option value="admin">Admin</option>
-                                <option value="normal">Normal</option>
-                            </select>
-                        </div>--%>
 
                         <hr class="colorgraph">
                         <div class="row">

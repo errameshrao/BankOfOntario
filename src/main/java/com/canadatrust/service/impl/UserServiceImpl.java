@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
-     @Autowired
-    UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public User getUserByUserName(String email) {
@@ -23,5 +24,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByPassword(String oldPassword) {
         return userRepository.getUserByPassword(oldPassword);
+    }
+
+    @Override
+    public List getUserList() {
+        return userRepository.getUserList();
     }
 }

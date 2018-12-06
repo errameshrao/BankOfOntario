@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +73,7 @@
                         <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${user.firstName} ${user.lastName}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/openChangePassword">Change Password</a></li>
-                                <li><a href="#">My Profile</a></li>
+                                <li><a href="/myProfilePage">My Profile</a></li>
                                 <li><a href="#">Register New Employee</a></li>
                             </ul>
                         </li>
@@ -135,88 +136,54 @@
 
     <div class="clearfix"></div>
 
-    <%--<div class="row">
+
+    <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
             <table class="table table-bordered table-responsive table-hover table-striped">
                 <thead>
                 <tr class="bg-primary">
-                    <th><input type="checkbox" value=""></th>
-                    <th>Name</th>
-                    <th>UserType</th>
-                    <th>Email</th>
+                    <%--<th><input type="checkbox" value=""></th>--%>
+                    <th>Create Date</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Type</th>
+                    <th>E-mail</th>
+                    <th>Account No</th>
+                    <th>Account Balance</th>
+                    <th>Address</th>
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="user" items="${userList}">
                 <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>John</td>
-                    <td>Normal</td>
-                    <td>john@example.com</td>
+                    <td nowrap><span><c:out value="${user.createDate}"/></span></td>
+                    <td nowrap><span><c:out value="${user.firstName}"/></span></td>
+                    <td nowrap><span><c:out value="${user.lastName}"/></span></td>
+                    <td nowrap><span><c:out value="${user.userType}"/></span></td>
+                    <td nowrap><span><c:out value="${user.email}"/></span></td>
+                    <td nowrap>
+                        <a href="javascript:openAccountDetails('<c:out value="${user.account.id}"/>')"><span><c:out value="${user.account.accountNumber}"/></span></a>
+                        <%--<a href="updateAsset({id:asset.id})" text-decoration="underline" >{{asset.name}}</a>--%>
+                    </td>
+                    <td nowrap><span><c:out value="${user.account.balance}"/></span></td>
+                    <td nowrap><span><c:out value="${user.address.streetNumber} ${user.address.streetName} ${user.address.city}
+                    ${user.address.province} ${user.address.country} ${user.address.postalCode}"/></span></td>
                 </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>Mary</td>
-                    <td>Admin</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>July</td>
-                    <td>Normal</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>John</td>
-                    <td>Normal</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>Mary</td>
-                    <td>Admin</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>July</td>
-                    <td>Normal</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>John</td>
-                    <td>Normal</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>Mary</td>
-                    <td>Admin</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>July</td>
-                    <td>Normal</td>
-                    <td>july@example.com</td>
-                </tr>
+                </c:forEach>
                 </tbody>
             </table>
-
         </div>
     </div>
 
-    <div class="row">
+<%--    <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
             <div class="text-center">
                 <input type="button" value="Save" class="btn btn-sm btn-info" />
             </div>
         </div>
-    </div>--%>
+    </div>&ndash;%&gt;--%>
 </div>
-
-
+</body>
 <div class="footerbar-wrapper">
     <div class="container-fluid">
         <div class="footertext text-center">
@@ -224,6 +191,4 @@
         </div>
     </div>
 </div>
-
-</body>
 </html>

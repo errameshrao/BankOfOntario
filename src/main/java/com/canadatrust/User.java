@@ -24,7 +24,6 @@ public class User implements Serializable, Cloneable {
     @Column(name = "VERSION")
     private int version;
 
-
     @NotNull
     @Column(name = "FIRST_NAME")
     private String firstName;
