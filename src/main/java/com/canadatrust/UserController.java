@@ -60,6 +60,18 @@ public class UserController {
         return new ModelAndView("adminPage","userList",usersList);
     }
 
+    @RequestMapping(value="showAccountInfo",method = RequestMethod.POST)
+    public ModelAndView showAccountInfo(@RequestParam("userId") String userId){
+
+        return new ModelAndView("accountInfo");
+    }
+
+    @RequestMapping(value="editUserInfo",method = RequestMethod.POST)
+    public ModelAndView editUserInfo(@RequestParam("userId") String userId){
+
+        return new ModelAndView("userInfo");
+    }
+
     @RequestMapping(value = "/update")
     public ModelAndView updateProfile(HttpSession httpSession){
 

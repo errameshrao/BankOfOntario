@@ -31,8 +31,25 @@
                 alert("Please select customer which you want to delete");
                 return;
             }
+            document.UserList.action="/deleteUser";
             document.UserList.submit();
         }
+        function showAccountDetails(id) {
+            document.UserList.userId.value=id;
+            document.UserList.action="/showAccountInfo";
+            document.UserList.submit();
+        }
+
+        function editUserInfo() {
+            if(document.UserList.userId.value==""){
+                alert("Please select customer whose information you want to change");
+                return;
+            }
+            document.UserList.action="/editUserInfo";
+            document.UserList.submit();
+        }
+
+
     </script>
 
 
@@ -111,17 +128,17 @@
         </div>
     </div>
 
-    <!-- <div class="clearfix"></div>
+    <%--<div class="clearfix"></div>
 
      <div class="row" style="margin-top:20px">
          <div class="search col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
              <input class="form-control" type="text" name="search" placeholder="Search..">
          </div>
-     </div>-->
+     </div>--%>
 
     <div class="clearfix"></div>
 
-    <form name="UserList" method="post" action="/deleteUser">
+    <form name="UserList" method="post" action="">
         <div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
                 <ul class="list-inline text-muted text-right">
@@ -136,15 +153,15 @@
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-primary" role="button" onclick="">
-                            <i class="glyphicon glyphicon-edit"></i> Edit Account Information
+                        <a class="btn btn-primary" role="button" href="javascript:editUserInfo()">
+                            <i class="glyphicon glyphicon-edit"></i> Edit User Information
                         </a>
                     </li>
-                    <li>
+                    <%--<li>
                         <a class="btn btn-danger" role="button" onclick="">
                             <i class="glyphicon glyphicon-trash"></i> Block Account
                         </a>
-                    </li>
+                    </li>--%>
                 </ul>
 
             </div>
@@ -180,10 +197,7 @@
                                 <td nowrap><span><c:out value="${user.lastName}"/></span></td>
                                 <td nowrap><span><c:out value="${user.userType}"/></span></td>
                                 <td nowrap><span><c:out value="${user.email}"/></span></td>
-                                <td nowrap>
-                                    <a href="javascript:openAccountDetails('<c:out value="${user.account.id}"/>')"><span><c:out value="${user.account.accountNumber}"/></span></a>
-                                        <%--<a href="updateAsset({id:asset.id})" text-decoration="underline" >{{asset.name}}</a>--%>
-                                </td>
+                                <td nowrap><a href="javascript:showAccountDetails('${user.id}')">${user.account.accountNumber}</a></td>
                                 <td nowrap><span><c:out value="${user.account.balance}"/></span></td>
                                 <td nowrap><span><c:out value="${user.address.streetNumber} ${user.address.streetName} ${user.address.city}
                     ${user.address.province} ${user.address.country} ${user.address.postalCode}"/></span></td>
