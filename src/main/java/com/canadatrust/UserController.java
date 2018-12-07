@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -25,6 +22,9 @@ import java.util.Random;
 @Controller
 public class UserController {
 
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -43,15 +43,62 @@ public class UserController {
     @RequestMapping(value = "/myProfilePage")
     public ModelAndView openUserProfile(HttpSession httpSession){
 
+        User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
+
+        User dbUser =userService.getUserById(loggedInUser.getId());
+
+
+        return new ModelAndView("userProfile","User",dbUser);
+    }
+
+    @RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
+    public ModelAndView deleteUser(@RequestParam("userId") String userId){
+
+        User user = userService.getUserById(userId);
+        userRepository.delete(user);
+        List usersList = userRepository.findAll();
+        return new ModelAndView("adminPage","userList",usersList);
+    }
+
+    @RequestMapping(value = "/update")
+    public ModelAndView updateProfile(HttpSession httpSession){
+
         User user = (User)httpSession.getAttribute("loggedInUser");
 
-        return new ModelAndView("userProfile","User",user);
+        return new ModelAndView("updateProfile","User",user);
+    }
+
+
+    @RequestMapping(value="/updateUserDetails",method = RequestMethod.POST)
+    public ModelAndView updateUserDetails(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
+                                          @RequestParam("email") String email, @RequestParam("streetNumber") String streetNumber,
+                                          @RequestParam("streetName") String streetName, @RequestParam("city") String city,
+                                          @RequestParam("province") String province, @RequestParam("country") String country,
+                                          @RequestParam("postalCode") String postalCode,HttpSession httpSession){
+
+
+        User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
+        User user = userService.getUserById(loggedInUser.getId());
+        Address address = user.getAddress();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        address.setStreetNumber(streetNumber);
+        address.setStreetName(streetName);
+        address.setCity(city);
+        address.setProvince(province);
+        address.setCountry(country);
+        address.setPostalCode(postalCode);
+        user.setAddress(address);
+
+        userRepository.save(user);
+        List usersList = userRepository.findAll();
+        return new ModelAndView("adminPage","userList",usersList);
     }
 
     @ModelAttribute
     @RequestMapping(value="/registerUser", method = RequestMethod.POST)
-    public ModelAndView registerUser(@Valid @ModelAttribute("user") User user,
-                                     BindingResult result, ModelMap model){
+    public ModelAndView registerUser(@Valid @ModelAttribute("user") User user,HttpSession httpSession){
         Random random = new Random();
         int newAccount = 0;
         user.getAccount().setCreateDate(new Date());
@@ -76,7 +123,7 @@ public class UserController {
         user.getAccount().setAccountNumber(newAccount);
         user.setCreateDate(new Date());
         userRepository.save(user);
-
-        return new ModelAndView("adminPage");
+        List usersList = userRepository.findAll();
+        return new ModelAndView("adminPage","userList",usersList);
     }
 }

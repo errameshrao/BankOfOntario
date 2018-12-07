@@ -11,4 +11,6 @@ public interface UserService {
     User getUserByPassword(String oldPassword);
 
     List getUserList();
+
+    User getUserById(String id);
 }

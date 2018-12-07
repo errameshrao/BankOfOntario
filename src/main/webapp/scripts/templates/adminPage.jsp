@@ -21,8 +21,24 @@
 
     <script src="/scripts/lib/js/file.js" type="text/javascript"></script>
 
+    <script type="text/javascript">
+        function setUserId(id) {
+            document.UserList.userId.value=id;
+        }
+
+        function deleteUserAccount() {
+            if(document.UserList.userId.value==""){
+                alert("Please select customer which you want to delete");
+                return;
+            }
+            document.UserList.submit();
+        }
+    </script>
+
+
 </head>
 <body>
+
 <div class="navbar-wrapper">
     <div class="container-fluid">
         <nav class="navbar navbar-fixed-top">
@@ -69,20 +85,20 @@
                             </ul>
                         </li>
                     </ul>--%>
-                    <ul class="nav navbar-nav pull-right">
-                        <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${user.firstName} ${user.lastName}<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/openChangePassword">Change Password</a></li>
-                                <li><a href="/myProfilePage">My Profile</a></li>
-                                <li><a href="#">Register New Employee</a></li>
-                            </ul>
-                        </li>
-                        <li class=""><a href="/logoutUser">Logout</a></li>
-                    </ul>
-                </div>
+                <ul class="nav navbar-nav pull-right">
+                    <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${user.firstName} ${user.lastName}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/openChangePassword">Change Password</a></li>
+                            <li><a href="/myProfilePage">My Profile</a></li>
+                            <li><a href="#">Register New Employee</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/logoutUser">Logout</a></li>
+                </ul>
             </div>
-        </nav>
     </div>
+    </nav>
+</div>
 </div> <!-- /.Top Bar-->
 
 <div class="clearfix"></div>
@@ -105,83 +121,88 @@
 
     <div class="clearfix"></div>
 
+    <form name="UserList" method="post" action="/deleteUser">
+        <div class="row" style="margin-top:20px">
+            <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+                <ul class="list-inline text-muted text-right">
+                    <li>
+                        <a class="btn btn-info" role="button" href="/openaccount">
+                            <i class="glyphicon glyphicon-check"></i> Open New Account
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-danger" role="button" href="javascript:deleteUserAccount()">
+                            <i class="glyphicon glyphicon-remove"></i> Delete Existing Account
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-primary" role="button" onclick="">
+                            <i class="glyphicon glyphicon-edit"></i> Edit Account Information
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-danger" role="button" onclick="">
+                            <i class="glyphicon glyphicon-trash"></i> Block Account
+                        </a>
+                    </li>
+                </ul>
 
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-            <ul class="list-inline text-muted text-right">
-                <li>
-                    <a class="btn btn-info" role="button" href="/openaccount">
-                        <i class="glyphicon glyphicon-check"></i> Open New Account
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-danger" role="button" onclick="">
-                        <i class="glyphicon glyphicon-remove"></i> Delete Existing Account
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-primary" role="button" onclick="">
-                        <i class="glyphicon glyphicon-edit"></i> Edit Account Information
-                    </a>
-                </li>
-                 <li>
-                     <a class="btn btn-danger" role="button" onclick="">
-                         <i class="glyphicon glyphicon-trash"></i> Block Account
-                     </a>
-                 </li>
-            </ul>
-
-        </div>
-    </div>
-
-    <div class="clearfix"></div>
+            </div>
 
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-            <table class="table table-bordered table-responsive table-hover table-striped">
-                <thead>
-                <tr class="bg-primary">
-                    <%--<th><input type="checkbox" value=""></th>--%>
-                    <th>Create Date</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>User Type</th>
-                    <th>E-mail</th>
-                    <th>Account No</th>
-                    <th>Account Balance</th>
-                    <th>Address</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="user" items="${userList}">
-                <tr>
-                    <td nowrap><span><c:out value="${user.createDate}"/></span></td>
-                    <td nowrap><span><c:out value="${user.firstName}"/></span></td>
-                    <td nowrap><span><c:out value="${user.lastName}"/></span></td>
-                    <td nowrap><span><c:out value="${user.userType}"/></span></td>
-                    <td nowrap><span><c:out value="${user.email}"/></span></td>
-                    <td nowrap>
-                        <a href="javascript:openAccountDetails('<c:out value="${user.account.id}"/>')"><span><c:out value="${user.account.accountNumber}"/></span></a>
-                        <%--<a href="updateAsset({id:asset.id})" text-decoration="underline" >{{asset.name}}</a>--%>
-                    </td>
-                    <td nowrap><span><c:out value="${user.account.balance}"/></span></td>
-                    <td nowrap><span><c:out value="${user.address.streetNumber} ${user.address.streetName} ${user.address.city}
+            <div class="clearfix"></div>
+
+            <input type="hidden" name="userId" id="userId" />
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+                    <table class="table table-bordered table-responsive table-hover table-striped">
+                        <thead>
+                        <tr class="bg-primary">
+                            <th></th>
+                            <th>Create Date</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>User Type</th>
+                            <th>E-mail</th>
+                            <th>Account No</th>
+                            <th>Account Balance</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="user" items="${userList}">
+                            <tr>
+                                <td>
+                                    <input type="radio" class="Radio" name="id" onclick="javascript:setUserId('${user.id}')">
+                                </td>
+                                <td nowrap><span><c:out value="${user.createDate}"/></span></td>
+                                <td nowrap><span><c:out value="${user.firstName}"/></span></td>
+                                <td nowrap><span><c:out value="${user.lastName}"/></span></td>
+                                <td nowrap><span><c:out value="${user.userType}"/></span></td>
+                                <td nowrap><span><c:out value="${user.email}"/></span></td>
+                                <td nowrap>
+                                    <a href="javascript:openAccountDetails('<c:out value="${user.account.id}"/>')"><span><c:out value="${user.account.accountNumber}"/></span></a>
+                                        <%--<a href="updateAsset({id:asset.id})" text-decoration="underline" >{{asset.name}}</a>--%>
+                                </td>
+                                <td nowrap><span><c:out value="${user.account.balance}"/></span></td>
+                                <td nowrap><span><c:out value="${user.address.streetNumber} ${user.address.streetName} ${user.address.city}
                     ${user.address.province} ${user.address.country} ${user.address.postalCode}"/></span></td>
-                </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-<%--    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-            <div class="text-center">
-                <input type="button" value="Save" class="btn btn-sm btn-info" />
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>&ndash;%&gt;--%>
+    </form>
+
+    <%--    <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+                <div class="text-center">
+                    <input type="button" value="Save" class="btn btn-sm btn-info" />
+                </div>
+            </div>
+        </div>&ndash;%&gt;--%>
 </div>
 </body>
 <div class="footerbar-wrapper">
