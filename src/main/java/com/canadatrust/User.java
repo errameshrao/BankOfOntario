@@ -47,11 +47,11 @@ public class User implements Serializable, Cloneable {
     @Column(name = "ISSUPERUSER")
     private boolean isSuperUser;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "ACCOUNT_ID")
     private Account account;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
     private Address address;
 
