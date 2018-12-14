@@ -32,6 +32,9 @@ public class UserController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private EmailController emailController;
+
     @RequestMapping(value = "/openaccount", method = RequestMethod.GET)
     public ModelAndView showForm(HttpSession httpSession, Model model) {
         User loggedInuser = (User) httpSession.getAttribute("loggedInUser");
@@ -60,16 +63,33 @@ public class UserController {
         return new ModelAndView("adminPage","userList",usersList);
     }
 
+    @RequestMapping(value="/BackToAdmin", method=RequestMethod.GET)
+    public ModelAndView adminListPage(){
+        List usersList = userRepository.findAll();
+        return new ModelAndView("adminPage","userList",usersList);
+    }
+
+    @RequestMapping(value="/BackToCustomer", method=RequestMethod.GET)
+    public ModelAndView customerHomePage(HttpSession httpSession){
+        User user = (User)httpSession.getAttribute("loggedInUser");
+        return new ModelAndView("customerPage","User",user);
+    }
+
     @RequestMapping(value="showAccountInfo",method = RequestMethod.POST)
     public ModelAndView showAccountInfo(@RequestParam("userId") String userId){
 
-        return new ModelAndView("accountInfo");
+        User user = userService.getUserById(userId);
+        Account account= user.getAccount();
+
+
+        return new ModelAndView("accountInfo","account",account);
     }
 
     @RequestMapping(value="editUserInfo",method = RequestMethod.POST)
     public ModelAndView editUserInfo(@RequestParam("userId") String userId){
+        User user = userService.getUserById(userId);
 
-        return new ModelAndView("userInfo");
+        return new ModelAndView("userInfo","User",user);
     }
 
     @RequestMapping(value = "/update")
@@ -135,6 +155,14 @@ public class UserController {
         user.getAccount().setAccountNumber(newAccount);
         user.setCreateDate(new Date());
         userRepository.save(user);
+
+        String comments = "Hi "+user.getFirstName()+" your "+user.getUserType()+" account having a/c no "+user.getAccount().getAccountNumber()+"" +
+                " has been successfully activated. Your opening balance is "+user.getAccount().getInitialBalance()+". You can " +
+                "login using the username "+user.getEmail()+" and password "+user.getPassword()+" Thanks for choosing TD Bank.";
+
+        boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments);
+
+
         List usersList = userRepository.findAll();
         return new ModelAndView("adminPage","userList",usersList);
     }

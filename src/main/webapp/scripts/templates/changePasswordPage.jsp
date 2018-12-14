@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,27 +34,30 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><span class="brandCircle">TD</span> Canada Trust</a>
+                        <c:choose>
+                            <c:when test="${UserType == 'admin'}">
+                                <a class="navbar-brand" href="/BackToAdmin"><span class="brandCircle">TD</span> Canada Trust</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="navbar-brand" href="/BackToCustomer"><span class="brandCircle">TD</span> Canada Trust</a>
+                            </c:otherwise>
+                        </c:choose>
                 </div>
                 <ul class="nav navbar-nav pull-right">
                     <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${user.firstName} ${user.lastName}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/openChangePassword">Change Password</a></li>
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="#">Register New Employee</a></li>
+                            <li><a href="/myProfilePage">My Profile</a></li>
                         </ul>
                     </li>
                     <li class=""><a href="/logoutUser">Logout</a></li>
                 </ul>
             </div>
+        </nav>
     </div>
-    </nav>
-</div>
-</div> <!-- /.Top Bar-->
 
 <div class="clearfix"></div>
 
-<div class="container">
+<div class="wrapper">
     <div class="row" style="margin-top:70px">
         <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
             <h2 class="title">Admin Panel</h2>
@@ -83,11 +87,19 @@
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input type="password" name="confirmNewPassword" id="confirmNewPassword" class="form-control input-lg" placeholder="Confirm New Password">
                     </div>
+
                     <hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="Change Password">
                         </div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-4 col-md-4">
+                        <a class="btn btn-lg btn-primary btn-block" role="button"
+                           href="/BackToAdmin">
+                            Back
+                        </a>
                     </div>
 
                     <div class="row">
@@ -100,16 +112,16 @@
         </div>
     </div>
 
-</div>
-
-
-<div class="footerbar-wrapper">
-    <div class="container-fluid">
-        <div class="footertext text-center">
-            <span>&copy; Copyrights 2018. Canada Trust. All Rights Reserved.</span>
+    <div class="clearfix"></div>
+    <div class="footerbar-wrapper">
+        <div class="container-fluid">
+            <div class="footertext text-center">
+                <span>&copy; Copyrights 2018. Canada Trust. All Rights Reserved.</span>
+            </div>
         </div>
     </div>
-</div>
 
+</div>
+</div>
 </body>
 </html>

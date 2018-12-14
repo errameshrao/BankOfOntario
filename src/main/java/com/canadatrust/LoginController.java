@@ -34,10 +34,10 @@ public class LoginController {
     }
 
     @RequestMapping("/openChangePassword")
-    public String openChangePassword() {
-        return "changePasswordPage";
+    public ModelAndView openChangePassword(HttpSession httpSession) {
+        User user = (User)httpSession.getAttribute("loggedInUser");
+        return new ModelAndView("changePasswordPage","UserType",user.getUserType());
     }
-
     @RequestMapping("/changePassword")
     public ModelAndView changePassword(HttpSession httpSession,Model model,@RequestParam("oldPassword") String oldPassword,
                                  @RequestParam("newPassword") String newPassword) {
@@ -46,7 +46,7 @@ public class LoginController {
 
         User loggedInuser = (User) httpSession.getAttribute("loggedInUser");
 
-        if (userByOldPassword !=null && userByOldPassword.equals(loggedInuser)) {
+        if (userByOldPassword !=null && userByOldPassword.getId().equals(loggedInuser.getId())) {
 
             loggedInuser.setPassword(newPassword);
             userRepository.save(loggedInuser);
@@ -78,7 +78,7 @@ public class LoginController {
         }else if(user.getPassword().equalsIgnoreCase(password) && user.getUserType().equalsIgnoreCase("normal")){
             httpSession.setAttribute("loggedInUser",user);
             model.addAttribute("user", user);
-            return new ModelAndView("customerPage");
+            return new ModelAndView("customerPage","User",user);
         }else{
             model.addAttribute("loginMessage", "Invalid User name or password");
             return new ModelAndView( "errorPage");

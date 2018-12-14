@@ -67,41 +67,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><span class="brandCircle">TD</span> Canada Trust</a>
+                    <a class="navbar-brand" href="/BackToAdmin"><span class="brandCircle">TD</span> Canada Trust</a>
                 </div>
-                <%--<div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.jsp" class="">Home</a></li>
-                        <li class=" dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class=" dropdown">
-                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Departments</a>
-                                </li>
-                                <li><a href="#">Add New</a></li>
-                            </ul>
-                        </li>
-                        <!--<li><a href="addnew.html">User</a></li>-->
-                        <li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"></a></li>
-                                <li><a href="#">Create User</a></li>
-                            </ul>
-                        </li>
-                        <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolio<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">View Staff</a></li>
-                                <li><a href="#">Add New</a></li>
-                                <li><a href="#">Bulk Upload</a></li>
-                            </ul>
-                        </li>
-                        <li class=" down"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistical Analysis <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Change Time Entry</a></li>
-                                <li><a href="#">Report</a></li>
-                            </ul>
-                        </li>
-                    </ul>--%>
                 <ul class="nav navbar-nav pull-right">
                     <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${user.firstName} ${user.lastName}<span class="caret"></span></a>
                         <ul class="dropdown-menu">

@@ -36,17 +36,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><span class="brandCircle">TD</span> Canada Trust</a>
+                        <a class="navbar-brand" href="/BackToAdmin"><span class="brandCircle">TD</span> Canada Trust</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
                             <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as ${loggedInUser.firstName} ${loggedInUser.lastName} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Change Password</a></li>
-                                    <li><a href="#">My Profile</a></li>
+                                    <li><a href="/openChangePassword">Change Password</a></li>
+                                    <li><a href="/myProfilePage">My Profile</a></li>
                                 </ul>
                             </li>
-                            <li class=""><a href="#">Logout</a></li>
+                            <li class=""><a href="/logoutUser">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -129,7 +129,10 @@
                             </div>
 
                             <div class="col-xs-6 col-sm-4 col-md-4">
-                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Back">
+                                <a class="btn btn-lg btn-primary btn-block" role="button"
+                                   href="/BackToAdmin">
+                                    Back
+                                </a>
                             </div>
 
                         </div>
