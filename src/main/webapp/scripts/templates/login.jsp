@@ -21,11 +21,6 @@
     <script src="/scripts/lib/js/file.js" type="text/javascript"></script>
 
 </head>
-
-
-
-
-
 <body>
 <div id="wrapper">
 
@@ -68,14 +63,17 @@
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Log In">
                             </div>
                         </div>
+                        <div class="row">
+                            <div  style="color:red;">
+                                ${loginMessage}
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
         </div>
 
     </div>
-
-
     <div class="clearfix"></div>
 
     <div class="footerbar-wrapper">
@@ -85,8 +83,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 </body>

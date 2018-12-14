@@ -1,21 +1,17 @@
 package com.canadatrust;
 
-import com.canadatrust.User;
 import com.canadatrust.repository.UserRepository;
 import com.canadatrust.service.AccountService;
 import com.canadatrust.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -106,11 +102,16 @@ public class UserController {
                                           @RequestParam("email") String email, @RequestParam("streetNumber") String streetNumber,
                                           @RequestParam("streetName") String streetName, @RequestParam("city") String city,
                                           @RequestParam("province") String province, @RequestParam("country") String country,
-                                          @RequestParam("postalCode") String postalCode,HttpSession httpSession){
+                                          @RequestParam("postalCode") String postalCode,HttpSession httpSession,@RequestParam("userId") String userId){
 
+        User user=null;
 
-        User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
-        User user = userService.getUserById(loggedInUser.getId());
+        if(userId==null || userId =="") {
+            User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
+            user = userService.getUserById(loggedInUser.getId());
+        }else{
+            user = userService.getUserById(userId);
+        }
         Address address = user.getAddress();
         user.setFirstName(firstName);
         user.setLastName(lastName);

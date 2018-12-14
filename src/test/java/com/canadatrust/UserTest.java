@@ -1,8 +1,5 @@
 package com.canadatrust;
 
-import com.canadatrust.Account;
-import com.canadatrust.Address;
-import com.canadatrust.User;
 import com.canadatrust.repository.UserRepository;
 import com.canadatrust.service.UserService;
 import org.junit.Assert;
@@ -135,10 +132,5 @@ public class UserTest {
 
         System.out.println("**************************  User Unit Test Completed Successfully  **************************");
 
-
-
-
     }
-
-
 }

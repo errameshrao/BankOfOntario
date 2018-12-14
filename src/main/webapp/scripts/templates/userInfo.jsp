@@ -60,6 +60,7 @@
         <div class="row" style="margin-top:60px">
             <div class="col-xs-8 col-sm-6 col-md-4 col-sm-offset-2 col-md-offset-3">
                 <form:form role="form" action="/updateUserDetails" method="POST">
+                    <input type="hidden" name="userId" id="userId" value ="${User.id}" />
                     <fieldset>
                         <h2>Update Customer Information</h2>
                         <div class="row">

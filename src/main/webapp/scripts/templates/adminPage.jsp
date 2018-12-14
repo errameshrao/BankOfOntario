@@ -95,14 +95,6 @@
         </div>
     </div>
 
-    <%--<div class="clearfix"></div>
-
-     <div class="row" style="margin-top:20px">
-         <div class="search col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-             <input class="form-control" type="text" name="search" placeholder="Search..">
-         </div>
-     </div>--%>
-
     <div class="clearfix"></div>
 
     <form name="UserList" method="post" action="">
@@ -176,14 +168,6 @@
             </div>
         </div>
     </form>
-
-    <%--    <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-                <div class="text-center">
-                    <input type="button" value="Save" class="btn btn-sm btn-info" />
-                </div>
-            </div>
-        </div>&ndash;%&gt;--%>
 </div>
 </body>
 <div class="footerbar-wrapper">

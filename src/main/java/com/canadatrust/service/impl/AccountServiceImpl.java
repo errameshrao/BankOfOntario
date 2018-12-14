@@ -1,6 +1,5 @@
 package com.canadatrust.service.impl;
 
-import com.canadatrust.Account;
 import com.canadatrust.repository.AccountRepository;
 import com.canadatrust.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;

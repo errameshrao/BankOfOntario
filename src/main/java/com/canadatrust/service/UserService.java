@@ -13,4 +13,6 @@ public interface UserService {
     List getUserList();
 
     User getUserById(String id);
+
+    User getUserByEmailPwd(String email, String password);
 }

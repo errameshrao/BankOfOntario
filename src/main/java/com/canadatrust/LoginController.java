@@ -63,10 +63,10 @@ public class LoginController {
     public ModelAndView authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password ,
                                    Model model, HttpSession httpSession) {
 
-        User user = userService.getUserByUserName(email);
+        User user = userService.getUserByEmailPwd(email,password);
         if(user==null){
             model.addAttribute("loginMessage", "Invalid User name or password");
-            return new ModelAndView ("errorPage");
+            return new ModelAndView ("login","loginMessage", "Invalid User name or password");
         }
 
         if(user.getPassword().equalsIgnoreCase(password) && user.getUserType().equalsIgnoreCase("Admin")){
@@ -75,13 +75,10 @@ public class LoginController {
             httpSession.setAttribute("loggedInUser",user);
             model.addAttribute("user", user);
             return new ModelAndView("adminPage","userList",usersList);
-        }else if(user.getPassword().equalsIgnoreCase(password) && user.getUserType().equalsIgnoreCase("normal")){
+        }else {
             httpSession.setAttribute("loggedInUser",user);
             model.addAttribute("user", user);
             return new ModelAndView("customerPage","User",user);
-        }else{
-            model.addAttribute("loginMessage", "Invalid User name or password");
-            return new ModelAndView( "errorPage");
         }
     }
 
