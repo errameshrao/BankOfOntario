@@ -16,7 +16,7 @@ public class User implements Serializable, Cloneable {
     @Column(name = "USER_ID")
     private String id;
 
-
+// demo
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
