@@ -1,4 +1,4 @@
-package com.canadatrust;
+package com.bankofontario;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package com.canadatrust.repository;
+package com.bankofontario.repository;
 
-import com.canadatrust.User;
+import com.bankofontario.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.canadatrust.service;
+package com.bankofontario.service;
 
 public interface AddressService {
 }
