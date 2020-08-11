@@ -16,7 +16,7 @@ import java.util.Date;
 public class UserTest {
 
     // User object data
-    private static String FIRST_NAME ="Puspa";
+    /*private static String FIRST_NAME ="Puspa";
 
     private static String LAST_NAME ="Rani";
 
@@ -131,6 +131,6 @@ public class UserTest {
         userRepository.delete(updateDbuser);
 
         System.out.println("**************************  User Unit Test Completed Successfully  **************************");
-
+*/
     }
 }
