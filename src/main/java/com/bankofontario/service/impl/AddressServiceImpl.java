@@ -1,6 +1,6 @@
-package com.canadatrust.service.impl;
+package com.bankofontario.service.impl;
 
-import com.canadatrust.service.AddressService;
+import com.bankofontario.service.AddressService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

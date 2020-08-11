@@ -1,4 +1,4 @@
-package com.canadatrust;
+package com.bankofontario;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "CANADA_TRUST_USER")
+@Table(name = "BANK_OF_ONTARIO_USER")
 public class User implements Serializable, Cloneable {
     @Id
     @GeneratedValue(generator = "system-uuid")

@@ -1,6 +1,6 @@
-package com.canadatrust.repository;
+package com.bankofontario.repository;
 
-import com.canadatrust.Address;
+import com.bankofontario.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-    <title>Login Canada Trust</title>
+    <title>Bank Of Ontario</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -36,7 +36,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/BackToAdmin"><span class="brandCircle">TD</span> Canada Trust</a>
+                        <a class="navbar-brand" href="/BackToAdmin"><span class="brandCircle">BOO</span> Bank Of Ontario</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
@@ -188,7 +188,7 @@
     <div class="footerbar-wrapper">
         <div class="container-fluid">
             <div class="footertext text-center">
-                <span>&copy; Copyrights 2018. Canada Trust. All Rights Reserved.</span>
+                <span>&copy; Copyrights 2020. Bank Of Ontario. All Rights Reserved.</span>
             </div>
         </div>
     </div>

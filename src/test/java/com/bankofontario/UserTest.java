@@ -1,7 +1,7 @@
-package com.canadatrust;
+package com.bankofontario;
 
-import com.canadatrust.repository.UserRepository;
-import com.canadatrust.service.UserService;
+import com.bankofontario.repository.UserRepository;
+import com.bankofontario.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

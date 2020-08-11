@@ -1,6 +1,6 @@
-package com.canadatrust.service;
+package com.bankofontario.service;
 
-import com.canadatrust.User;
+import com.bankofontario.User;
 
 import java.util.List;
 

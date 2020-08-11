@@ -1,4 +1,4 @@
-package com.canadatrust;
+package com.bankofontario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
-package com.canadatrust.service.impl;
+package com.bankofontario.service.impl;
 
-import com.canadatrust.repository.AccountRepository;
-import com.canadatrust.service.AccountService;
+import com.bankofontario.repository.AccountRepository;
+import com.bankofontario.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
