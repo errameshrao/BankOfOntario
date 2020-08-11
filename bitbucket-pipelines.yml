@@ -1,0 +1,20 @@
+# This is a sample build configuration for Java (Maven).
+# Check our guides at https://confluence.atlassian.com/x/zd-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: maven:3.6.1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - maven
+        script:
+          - pipe: atlassian/heroku-deploy:1.1.4
+            variables:
+              HEROKU_API_KEY: $HEROKU_API_KEY
+              HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ZIP_FILE: 'BankOfOntario.tar.gz'
+              WAIT: 'true' # wait for build completion and exit the pipe
+          - mvn -B verify # -B batch mode makes Maven less verbose
