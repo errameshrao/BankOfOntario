@@ -56,7 +56,6 @@ public class SendEmail {
             msg.setSubject(subject);
             msg.setContent(message,"text/plain");
             Transport.send(msg);
-            System.out.println("111111111111111111111111111111111111111111111111111");
             return true;
         }catch(Exception e)
         {

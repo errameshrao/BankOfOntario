@@ -161,7 +161,7 @@ public class UserController {
                 " has been successfully activated. Your opening balance is "+user.getAccount().getInitialBalance()+". You can " +
                 "login using the username "+user.getEmail()+" and password "+user.getPassword()+" Thanks for choosing TD Bank.";
 
-        //boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments);
+        boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments);
 
 
         List usersList = userRepository.findAll();

@@ -14,10 +14,10 @@ public class EmailController {
     public boolean sendEmail( String UserName,String UserComments ) {
 
 
-        String [] bccRecepients =new String[]{"sugardaddy647@gmail.com"};
+        String [] bccRecepients =new String[]{"bankofontario2020@gmail.com"};
 
         boolean response = new SendEmail().sendMail(recepients, bccRecepients, "Account details and activation confirmation",
-                UserComments,"sugardaddy647@gmail.com", "Ramesh@98s",UserName);
+                UserComments,"bankofontario2020@gmail.com", "BooTest@2020",UserName);
         return response;
     }
 }
