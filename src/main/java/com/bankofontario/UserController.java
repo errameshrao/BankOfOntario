@@ -159,9 +159,11 @@ public class UserController {
 
         String comments = "Hi "+user.getFirstName()+" your "+user.getUserType()+" account having a/c no "+user.getAccount().getAccountNumber()+"" +
                 " has been successfully activated. Your opening balance is "+user.getAccount().getInitialBalance()+". You can " +
-                "login using the username "+user.getEmail()+" and password "+user.getPassword()+" Thanks for choosing TD Bank.";
+                "login using the username "+user.getEmail()+" and password "+user.getPassword()+" Thanks for choosing Bank Of Ontario.";
 
-        boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments);
+        String [] recepients = new String[]{user.getEmail()};
+
+        boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments,recepients);
 
 
         List usersList = userRepository.findAll();

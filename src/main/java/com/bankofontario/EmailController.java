@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class EmailController {
 
 
-    String [] recepients = new String[]{"sugardaddy647@gmail.com"};
 
     @RequestMapping(value = "/sendemail", method = RequestMethod.POST)
-    public boolean sendEmail( String UserName,String UserComments ) {
+    public boolean sendEmail( String UserName,String UserComments, String[] recepients ) {
 
 
-        String [] bccRecepients =new String[]{"bankofontario2020@gmail.com"};
+        String [] bccRecepients =new String[]{};
 
         boolean response = new SendEmail().sendMail(recepients, bccRecepients, "Account details and activation confirmation",
                 UserComments,"bankofontario2020@gmail.com", "BooTest@2020",UserName);

@@ -173,7 +173,7 @@
 <div class="footerbar-wrapper">
     <div class="container-fluid">
         <div class="footertext text-center">
-            <span>&copy; Copyrights 2020. Bank Of Ontario. All Rights Reserved.</span>
+            <span>&copy; Copyrights 2021. Bank Of Ontario. All Rights Reserved.</span>
         </div>
     </div>
 </div>
