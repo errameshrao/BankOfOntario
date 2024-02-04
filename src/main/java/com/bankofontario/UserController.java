@@ -161,9 +161,8 @@ public class UserController {
                 " has been successfully activated. Your opening balance is "+user.getAccount().getInitialBalance()+". You can " +
                 "login using the username "+user.getEmail()+" and password "+user.getPassword()+" Thanks for choosing Bank Of Ontario.";
 
-        String [] recepients = new String[]{user.getEmail()};
 
-        boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments,recepients);
+        boolean emailSent = emailController.sendEmail(user.getFirstName()+" "+user.getLastName(),comments,user.getEmail());
 
 
         List usersList = userRepository.findAll();

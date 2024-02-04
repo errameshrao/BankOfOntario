@@ -1,5 +1,6 @@
 package com.bankofontario;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -14,7 +15,7 @@ public class SendEmail {
     private String SMTP_HOST ="smtp.gmail.com";
 
 
-    public boolean sendMail(String[] recepients, String[] bccRecepients, String subject,String message,
+    public boolean sendMail(List<String> recipients, String[] bccRecepients, String subject, String message,
                             String fromAddress, String password, String name)
     {
         /*String FROM_ADDRESS =fromAddress;
@@ -40,10 +41,11 @@ public class SendEmail {
             InternetAddress from = new InternetAddress(fromAddress, name);
             msg.setFrom(from);
             //To Recipients
-            InternetAddress[] toAddresses = new InternetAddress[recepients.length];
-            for (int i =0;i<recepients.length; i++)
+            InternetAddress[] toAddresses = new InternetAddress[recipients.size()];
+
+            for (int i =0;i<=recipients.size()-1; i++)
             {
-                toAddresses[i] = new InternetAddress(recepients[i]);
+                toAddresses[i] = new InternetAddress(recipients.get(i));
             }
             msg.setRecipients(Message.RecipientType.TO, toAddresses);
             //BCC Recipients
@@ -56,6 +58,7 @@ public class SendEmail {
             msg.setSubject(subject);
             msg.setContent(message,"text/plain");
             Transport.send(msg);
+            System.out.println("email sent successfully");
             return true;
         }catch(Exception e)
         {
