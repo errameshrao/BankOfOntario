@@ -17,7 +17,7 @@ public class EmailController {
         List<String> emailList = new ArrayList<String>();
         emailList.add(email);
 
-        String [] bccRecepients =new String[]{"sugardaddy647@gmail.com"};
+        String [] bccRecepients =new String[]{};
 
         boolean response = new SendEmail().sendMail(emailList, bccRecepients, "Account details and activation confirmation",
                 UserComments,"sugardaddy647@gmail.com", "Ramesh@98s",UserName);

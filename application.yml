@@ -8,4 +8,5 @@ spring:
     platform: postgres
     url: 
     username: 
+    password: 
     driverClassName: org.postgresql.Driver

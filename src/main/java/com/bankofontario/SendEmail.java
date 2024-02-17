@@ -18,9 +18,9 @@ public class SendEmail {
     public boolean sendMail(List<String> recipients, String[] bccRecepients, String subject, String message,
                             String fromAddress, String password, String name)
     {
-        String FROM_ADDRESS =fromAddress;
+        /*String FROM_ADDRESS =fromAddress;
         String PASSWORD =password;
-        String FROM_NAME=name;
+        String FROM_NAME=name;*/
 
         try{
             Properties props =new Properties();
@@ -33,12 +33,12 @@ public class SendEmail {
             Session session = Session.getInstance(props, new javax.mail.Authenticator(){
                 protected PasswordAuthentication getPasswordAuthentication()
                 {
-                    return new PasswordAuthentication(FROM_ADDRESS,PASSWORD);
+                    return new PasswordAuthentication(fromAddress,password);
                 }
             });
 
             Message msg = new MimeMessage(session);
-            InternetAddress from = new InternetAddress(FROM_ADDRESS, FROM_NAME);
+            InternetAddress from = new InternetAddress(fromAddress, name);
             msg.setFrom(from);
             //To Recipients
             InternetAddress[] toAddresses = new InternetAddress[recipients.size()];
