@@ -12,7 +12,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/scripts/lib/fonts/fonts.min.css" />
+    <link rel="stylesheet" type="text/css" href="/scripts/lib/fonts/fonts.css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
@@ -36,6 +36,8 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"><span class="brandCircle">BOO</span> Bank Of Ontario</a>
+                        </div>
+                </div>
             </nav>
         </div>
     </div> <!-- /.Top Bar-->

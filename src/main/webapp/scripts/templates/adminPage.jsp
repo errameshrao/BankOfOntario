@@ -80,7 +80,6 @@
                     <li class=""><a href="/logoutUser">Logout</a></li>
                 </ul>
             </div>
-    </div>
     </nav>
 </div>
 </div> <!-- /.Top Bar-->
